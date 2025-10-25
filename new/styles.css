@@ -111,9 +111,12 @@ body {
     overflow-y: scroll;
     scrollbar-width: none;
 
+
 }
 
-.allBlogs::-webkit-scrollbar{
+
+
+.allBlogs::-webkit-scrollbar {
     scrollbar-width: none;
 }
 
@@ -157,4 +160,18 @@ body {
     align-items: center;
     justify-content: space-evenly;
     padding: 20px 12px !important;
+}
+
+.auto_scroll {
+    overflow: hidden;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
 }
