@@ -33,7 +33,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                <a class="nav-link active" aria-current="page" href="#home"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#blogs"
@@ -217,7 +219,7 @@
     </div>
 
     <div class="container-fluid p-0" id="home">
-      <h1 class="blog_header m-0">
+      <h1 class="blog_header m-0 fw-bold">
         This is Blog Site. <br />
         Write your memories.
       </h1>
@@ -278,25 +280,27 @@
     </div>
 
     <div class="blog container-fluid p-0" id="blogs">
-      <div class="blog_container">
-        <div class="auto_scroll">
-       
-            <div class="allBlogs" id="allBlogs"></div>
-            <div  class="allBlogs2" id="allBlogs2"></div>
-
-        
+      <div id="blog_container" class="blog_container active_ele">
+        <div class="withOut_scroll">
+          <div id="prevent_scroll" class="prevent_scroll"></div>
         </div>
 
         <button
           type="button"
           id="blog_model_btn"
-          class="btn btn-primary active_ele"
+          class="btn btn-primary active_ele btn_addBlog"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           data-bs-whatever="@mdo"
         >
           Add Blog +
         </button>
+      </div>
+      <div class="blog_container_scroll">
+        <div class="auto_scroll">
+          <div class="allBlogs" id="allBlogs"></div>
+          <div class="allBlogs" id="allBlogs2" aria-hidden="true"></div>
+        </div>
       </div>
 
       <div
@@ -309,7 +313,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"> Blog</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Blog</h1>
               <button
                 type="button"
                 class="btn-close"

@@ -15,9 +15,11 @@ const signInUserNameEle = document.getElementById("signIn_userName");
 const signInUserEmailEle = document.getElementById("signIn_email");
 const signInUserPasswordEle = document.getElementById("signIn_password");
 const loginUserNav = document.querySelector(".login_user");
+const blogContainerEle = document.getElementById("blog_container");
 const blogModelBtnEle = document.getElementById("blog_model_btn");
 const addBlocksSecEle = document.getElementById("allBlogs");
 const addBlocksSec2Ele = document.getElementById("allBlogs2");
+const preventScrollUserBlockSecEle = document.getElementById("prevent_scroll");
 const blogHeadingEle = document.getElementById("blog_heading");
 const blogContentEle = document.getElementById("blog_text");
 const addBlogBtnEle = document.getElementById("addBlog");
@@ -36,6 +38,9 @@ function addingBlog() {
 
   if (currentLoginUser.userName && allBlogs) {
     addBlocksSecEle.innerHTML = "";
+    addBlocksSec2Ele.innerHTML = "";
+    preventScrollUserBlockSecEle.innerHTML = "";
+    blogContainerEle.classList.remove("active_ele");
 
     const loginUserBlogs = allBlogs.filter(
       (b) => b.userName === currentLoginUser.userName
@@ -103,7 +108,7 @@ function addingBlog() {
       divCard.appendChild(divCardBody);
       divCard.appendChild(divCardFooter);
 
-      addBlocksSecEle.append(divCard);
+      preventScrollUserBlockSecEle.append(divCard);
 
       deleteBtn.onclick = function (e) {
         const deleteId = e.target.getAttribute("data-id");
@@ -168,6 +173,9 @@ function addingBlog() {
     }
   } else {
     addBlocksSecEle.innerHTML = "";
+    preventScrollUserBlockSecEle.innerHTML = "";
+    addBlocksSec2Ele.innerHTML = "";
+    blogContainerEle.classList.add("active_ele");
 
     for (let i = 0; i < allBlogs.length; i++) {
       const divCard = document.createElement("div");
@@ -209,9 +217,8 @@ function addingBlog() {
 
       divCard.append(divImg);
       divCard.appendChild(divCardBody);
-
-      addBlocksSecEle.append(divCard);
-      // addBlocksSec2Ele.append(divCard);
+      addBlocksSecEle.appendChild(divCard);
+      addBlocksSec2Ele.appendChild(divCard.cloneNode(true));
     }
   }
 }
@@ -411,6 +418,8 @@ blogModelBtnEle.addEventListener("click", function (e) {
     localStorage.removeItem("blogs");
     localStorage.setItem("blogs", JSON.stringify(myBlogs));
     addBlocksSecEle.innerHTML = "";
+    addBlocksSec2Ele.innerHTML = "";
+    preventScrollUserBlockSecEle.innerHTML = "";
     addingBlog();
     blogFormEle.reset();
   };
